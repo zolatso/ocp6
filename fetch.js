@@ -1,6 +1,4 @@
 
-
-// Basic GET request
 function getMysteryFilms() {
     let results = []
     Promise.all([
@@ -28,10 +26,8 @@ function getMysteryFilms() {
         // Get the element where we want to display the data
         const displayElement = document.getElementById('cat_container_1');    
 
-        // Display as a formatted list
+        // Insert the 6 divs
         displayElement.innerHTML = divList
     })
     .catch(error => console.error('Error:', error));
-
-
 }
