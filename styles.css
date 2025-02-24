@@ -1,0 +1,60 @@
+.top_box {
+    margin: auto;
+    margin-top: 50px;
+    width: 837px;
+    height: 122px;
+    float: center;
+}
+
+.header_box {
+    margin: auto;
+    margin-top: 45px;
+    width: 837px;
+    float: center;
+}
+
+.best_film_box {
+    margin: auto;
+    width: 831px;
+    height: 363px;
+    border-style: solid;
+    border-width: 6px;
+}
+.cat_container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 45px;
+    margin: auto;
+    margin-top: 50px;
+    width: 837px;
+    height: 543px;
+    overflow: auto;
+    position: relative;
+}
+
+.film {
+    background-color: green;
+    width:249px;
+    height:249px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    color: white
+}
+.film_overlay {
+    background-color: black;
+    width: 249px;
+    height: 102px;
+    opacity: 0.5;
+    z-index: 1;
+    position: absolute;
+
+}
+.film_thumbnail {
+    width: 100%;
+    height: auto;
+}
+h1 {
+    font-family: "Oswald", Times, serif;
+}
