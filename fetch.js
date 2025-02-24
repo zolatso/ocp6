@@ -1,4 +1,15 @@
 
+function openModal(){
+  const modal = document.getElementById("main_modal")
+  modal.style.display = "block";
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+}
+
+
 function getMysteryFilms() {
     let results = []
     Promise.all([
@@ -17,7 +28,10 @@ function getMysteryFilms() {
         while (i < 6) {
             console.log(results[i].title)
             divList += '<div class="film">'
-            divList += `<div class="film_overlay"><p>${results[i].title}</p></div>`
+            divList += '<div class="film_overlay">'
+            divList += `<p>${results[i].title}</p>`
+            divList += `<button class="film_detail" onclick="openModal()">Details</button>`
+            divList += '</div>'
             divList += `<img class="film_thumbnail" src="${results[i].image_url}"></img>`
             divList += '</div>'
             i++
@@ -31,3 +45,6 @@ function getMysteryFilms() {
     })
     .catch(error => console.error('Error:', error));
 }
+
+
+
