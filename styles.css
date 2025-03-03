@@ -22,14 +22,15 @@
 /* Modal Content/Box */
 .modal_content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 5% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: 10px solid #000;
+    width: 778px;
+    height: 939px;
     z-index: 4;
   }
 
-.header_box {
+h1 {
     margin: auto;
     margin-top: 45px;
     width: 837px;

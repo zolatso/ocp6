@@ -6,7 +6,7 @@
         <script src="fetch.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body onload="getMysteryFilms()">
+    <body onload="loadInitial()">
         <div class="modal" id="main_modal">
             <div class="modal_content">
                 Floating stuff
@@ -15,29 +15,17 @@
         <div class="top_box">
             <img src="images/header_img.png">
         </div>
-        <div class="header_box"><h1>Meilleur film</h1></div>
+        <h1>Meilleur film</h1>
         <div class="best_film_box">test text</div>
-        <div class="header_box"><h1>Header test</h1></div>
-        <div class="cat_container" id="cat_container_1">
-                <!--<div class="film">
-                    <div class="film_overlay">film title</div>
-                    <img class="film_thumbnail" src="images/titanic.png">
-                </div>
-                <div class="film">test</div>
-                <div class="film">test</div>
-                <div class="film">Test text</div>
-                <div class="film">test</div>
-                <div class="film">test</div>
-            -->
-        </div>
-        <div class="header_box"><h1>Header test</h1></div>
-        <div class="cat_container">
-            <div class="film">Test text</div>
-            <div class="film">test</div>
-            <div class="film">test</div>
-            <div class="film">Test text</div>
-            <div class="film">test</div>
-            <div class="film">test</div>
-        </div>
+        <h1>Meilleur films (toutes categories)</h1>
+        <div class="cat_container" id="cat_container_1"></div>
+        <h1>Mystery</h1>
+        <div class="cat_container" id="cat_container_2"></div>
+        <h1>Comedy</h1>
+        <div class="cat_container" id="cat_container_3"></div>
+        <h1>Libre choix</h1>
+        <select id="select_list_1" onchange="getFilmBoxes('free_choice_container', this.value)">
+        </select>
+        <div class="cat_container" id="free_choice_container" ></div>
     </body>
 </html>
