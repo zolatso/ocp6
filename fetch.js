@@ -1,4 +1,3 @@
-// Promises
 function getSingleFilm(id) {
   const url = "http://localhost:8000/api/v1/titles/" + id;
   return  fetch(url)
@@ -43,69 +42,75 @@ function getGenres() {
     for (let i = 0; i < results.length; i++) {
       genres.push(results[i].name);
     }
-    
     return genres
   })
-
 }
 
-// End promises
-
-// Async functions
 async function openModal(id){
-  const modal = document.getElementById("main_modal")
-  const film = await getSingleFilm(id)
-  modal.style.display = "block";
-  window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+    const modal = document.getElementById("main_modal")
+    const film = await getSingleFilm(id)
+    modal.style.display = "block";
+    window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+    }
+  document.getElementById("modal_title").innerHTML = film.title
+  let genres = film.genres.join(", ")
+  document.getElementById("modal_film_info").innerHTML = film.year + " - " + genres
   }
-  }
-console.log(film.title)
-}
-
+  
 async function getFilmBoxes(container_id, genre) {
-  let url;
-  if (genre) {
-    url = `http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=${genre}`
-  } else {
-    url = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score'
+    let url;
+    if (genre) {
+      url = `http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=${genre}`
+    } else {
+      url = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score'
+    }
+    const results = await getTopFilms(url);
+    let divList = ''
+    let i = 0;
+    while (i < 6) {
+        divList += '<div class="film">'
+        divList += '<div class="film_overlay">'
+        divList += `<p>${results[i].title}</p>`
+        divList += `<button class="film_detail" onclick="openModal(${results[i].id})">Details</button>`
+        divList += '</div>'
+        divList += `<img class="film_thumbnail" src="${results[i].image_url}"></img>`
+        divList += '</div>'
+        i++
+    }
+  
+    // Get the element where we want to display the data
+    const displayElement = document.getElementById(container_id);    
+  
+    // Insert the 6 divs
+    displayElement.innerHTML = divList
+  
   }
-  const results = await getTopFilms(url);
-  let divList = ''
-  let i = 0;
-  while (i < 6) {
-      divList += '<div class="film">'
-      divList += '<div class="film_overlay">'
-      divList += `<p>${results[i].title}</p>`
-      divList += `<button class="film_detail" onclick="openModal(${results[i].id})">Details</button>`
-      divList += '</div>'
-      divList += `<img class="film_thumbnail" src="${results[i].image_url}"></img>`
-      divList += '</div>'
-      i++
-  }
-
-  // Get the element where we want to display the data
-  const displayElement = document.getElementById(container_id);    
-
-  // Insert the 6 divs
-  displayElement.innerHTML = divList
-
-}
-
+  
 async function populateList() {
-  const genres = await getGenres();
-  let selectList;
-  for (let i = 0; i < genres.length; i++) {
-    selectList += `<option value="${genres[i]}">${genres[i]}</option>`
+    const genres = await getGenres();
+    let selectList;
+    for (let i = 0; i < genres.length; i++) {
+      selectList += `<option value="${genres[i]}">${genres[i]}</option>`
+    }
+    const list = document.getElementById("select_list_1");
+    list.innerHTML = selectList
   }
-  const list = document.getElementById("select_list_1");
-  list.innerHTML = selectList
+
+async function getTopBox() {
+  const all_films = await getTopFilms('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score')
+  const film = await getSingleFilm(all_films[0].id)
+  document.getElementById("top_img").src = film.image_url
+  document.getElementById("top_box_title").innerHTML = film.title
+  document.getElementById("top_box_description").innerHTML = film.description
 }
-// End async
+
 
 // Main function
 function loadInitial() {
+  getTopBox()
   getFilmBoxes("cat_container_1", false)
   getFilmBoxes("cat_container_2", "Mystery")
   getFilmBoxes("cat_container_3", "Comedy")

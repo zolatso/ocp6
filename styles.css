@@ -5,6 +5,14 @@
     height: 122px;
     float: center;
 }
+.top_box_img {
+    width:227px;
+    height:334px;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    color: white
+}
 
 .modal{
     display: none; /* Hidden by default */
