@@ -71,7 +71,8 @@ async function getFilmBoxes(container_id, genre) {
     let divList = ''
     let i = 0;
     while (i < 6) {
-        divList += '<div class="film">'
+        divList += '<div class="col-12 col-md-6 col-lg-4 mb-3" style="background-color: #999">'
+        divList += '<p>test</p>'
         divList += '<div class="film_overlay">'
         divList += `<p>${results[i].title}</p>`
         divList += `<button class="film_detail" onclick="openModal(${results[i].id})">Details</button>`
