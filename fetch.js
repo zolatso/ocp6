@@ -47,18 +47,12 @@ function getGenres() {
 }
 
 async function openModal(id){
-    const modal = document.getElementById("main_modal")
-    const film = await getSingleFilm(id)
-    modal.style.display = "block";
-    window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-    }
-  document.getElementById("modal_title").innerHTML = film.title
+  const film = await getSingleFilm(id)
+  document.getElementById("modal_headers").innerHTML = film.title
   let genres = film.genres.join(", ")
-  document.getElementById("modal_film_info").innerHTML = film.year + " - " + genres
-  }
+  document.getElementById("modal_headers").innerHTML += film.year + " - " + genres
+  document.getElementById("modal_header_img").innerHTML = `<img src="${film.image_url}">`
+}
   
 async function getFilmBoxes(container_id, genre) {
     let url;
@@ -71,13 +65,14 @@ async function getFilmBoxes(container_id, genre) {
     let divList = ''
     let i = 0;
     while (i < 6) {
-        divList += '<div class="col-12 col-md-6 col-lg-4 mb-3" style="background-color: #999">'
-        divList += '<p>test</p>'
-        divList += '<div class="film_overlay">'
+        divList += '<div class="col-12 col-md-6 col-lg-4 mb-3">'
+        divList += '<div class="card bg-dark text-white img-fluid">'
+        divList += `<img class="card-img" src="${results[i].image_url}"></img>`
+        divList += '<div class="card-img-overlay" style="background-color: #aaa; opacity: 0.5; height:35%;">'
         divList += `<p>${results[i].title}</p>`
-        divList += `<button class="film_detail" onclick="openModal(${results[i].id})">Details</button>`
+        divList += `<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="openModal(${results[i].id})">Details</button>`
         divList += '</div>'
-        divList += `<img class="film_thumbnail" src="${results[i].image_url}"></img>`
+        divList += '</div>'
         divList += '</div>'
         i++
     }
