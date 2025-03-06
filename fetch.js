@@ -48,10 +48,36 @@ function getGenres() {
 
 async function openModal(id){
   const film = await getSingleFilm(id)
-  document.getElementById("modal_headers").innerHTML = film.title
   let genres = film.genres.join(", ")
-  document.getElementById("modal_headers").innerHTML += film.year + " - " + genres
-  document.getElementById("modal_header_img").innerHTML = `<img src="${film.image_url}">`
+  let countries = film.countries.join(", ")
+  let gross_income = film.worldwide_gross_income != null ? film.worldwide_gross_income : 'N/A'
+  let directors = film.directors.join(", ")
+  let actors = film.actors.join(", ")
+  let modal_headers = ''
+  let modal_img = ''
+  let modal_main_text = ''
+
+  modal_headers += `<h3>${film.title}</h3>`
+  modal_headers += `<h5>${film.year} - ${genres}</h5>`
+  modal_headers += `<h5>${film.rated} - ${film.duration} minutes (${countries})</h5>`
+  modal_headers += `<h5>IMDB Score: ${film.imdb_score}/10</h5>`
+  modal_headers += `<h5>Recettes au box office: ${gross_income}</h5>`
+  modal_headers += `<p></p>`
+  modal_headers += `<p><b>Realisé par:</b></p>`
+  modal_headers += `<p>${directors}</p>`
+
+  modal_img = `<img src="${film.image_url}">`
+
+  modal_main_text += `<p>${film.long_description}</p>`
+  modal_main_text += `<p><b>Avec:</b></p>`
+  modal_main_text += `<p>${actors}</p>`
+  
+  console.log(modal_main_text)
+
+  document.getElementById("modal_headers").innerHTML = modal_headers
+  document.getElementById("modal_header_img").innerHTML = modal_img
+  document.getElementById("modal_main_text").innerHTML = modal_main_text
+  
 }
   
 async function getFilmBoxes(container_id, genre) {
@@ -101,6 +127,7 @@ async function getTopBox() {
   document.getElementById("top_img").src = film.image_url
   document.getElementById("top_box_title").innerHTML = film.title
   document.getElementById("top_box_description").innerHTML = film.description
+  document.getElementById("top_film_button").setAttribute('onclick', `openModal(${film.id})`)
 }
 
 

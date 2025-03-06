@@ -17,7 +17,7 @@
             </div>
         </div>-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <!--<div class="modal-header">
                   <h5 class="modal-title" id="film_modal_title"></h5>
@@ -27,13 +27,17 @@
                 </div>
             -->
                 <div class="modal-body">
-                  <div class="container">
-                    <div class="row">
+                  <div class="container-fluid">
+                    <div class="row align-items-start">
                         <div class="col-8" id ="modal_headers">
                             
                         </div>
                         <div class="col-4" id="modal_header_img">
-
+                        </div>
+                    </div>
+                    <div class="row align-items-start">
+                        <div class="col" id="modal_main_text">
+                            
                         </div>
                     </div>
                   </div>
@@ -58,11 +62,14 @@
         <div class="container border border-5" style="max-width: 844px; height: 369px">
             <div class="row align-items-start">
                 <div class="col-4">
-                    <img id="top_img">
+                    <div class="card img-fluid">
+                        <img class="card-img" id="top_img">
+                    </div>   
                 </div>
                 <div class="col-8">
                     <h3 id="top_box_title"></h3>
                     <h4 id="top_box_description"></h4>
+                    <button class="btn btn-primary" id="top_film_button" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
                 </div>
             </div>
         </div>
