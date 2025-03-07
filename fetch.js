@@ -91,7 +91,13 @@ async function getFilmBoxes(container_id, genre) {
     let divList = ''
     let i = 0;
     while (i < 6) {
-        divList += '<div class="col-12 col-md-6 col-lg-4 mb-3">'
+      let line1 = ''
+      if (i < 4) {
+        line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3">'
+      } else {
+        line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-lg-block">'
+      }
+        divList += line1
         divList += '<div class="card bg-dark text-white img-fluid">'
         divList += `<img class="card-img" src="${results[i].image_url}"></img>`
         divList += '<div class="card-img-overlay" style="background-color: #aaa; opacity: 0.5; height:35%;">'
