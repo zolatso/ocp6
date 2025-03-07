@@ -81,6 +81,11 @@
         <div class="container" style="max-width: 844px">
             <div class="row align-items-start gx-10 gy-10" id="cat_container_1">
             </div>
+            <div class="row d-lg-none">
+                <div class="col-12 text-center">
+                    <button id="toggleHeightBtn" class="btn btn-primary">See More</button>
+                </div>
+            </div>
         </div>
 
         <!-- BOX 2 -->
@@ -89,6 +94,11 @@
         </div>
         <div class="container" style="max-width: 844px">
             <div class="row align-items-start gx-10 gy-10" id="cat_container_2">
+            </div>
+            <div class="row d-lg-none">
+                <div class="col-12 text-center">
+                    <button id="toggleHeightBtn" class="btn btn-primary">See More</button>
+                </div>
             </div>
         </div>
 
@@ -100,18 +110,30 @@
         <div class="container" style="max-width: 844px">
             <div class="row align-items-start gx-10 gy-10" id="cat_container_3">
             </div>
+            <div class="row d-lg-none">
+                <div class="col-12 text-center">
+                    <button id="toggleHeightBtn" class="btn btn-primary">See More</button>
+                </div>
+            </div>
         </div>
 
 
         <!-- BOX 4 -->
         <div class="container" style="max-width: 844px">
-            <h2>Libre choix</h2>
+            <h2>Autre:</h2>
             <select id="select_list_1" onchange="getFilmBoxes('free_choice_container', this.value)">
             </select>
         </div>
         <div class="container" style="max-width: 844px">
-            <div class="row align-items-start gx-10 gy-10" id="free_choice_container">
-            <p>Please choose a film category from the list</p>
+            <div class="row align-items-start gx-10 gy-10" id="free_choice_container" style="min-height:300px">
+                <div class="col-12">
+                    <p>Please choose a film category from the list</p>
+                </div>
+            </div>
+            <div class="row d-lg-none">
+                <div class="col-12 text-center">
+                    <button id="toggleHeightBtn" class="btn btn-primary">Voir plus</button>
+                </div>
             </div>
         </div>
 
