@@ -92,14 +92,16 @@ async function getFilmBoxes(container_id, genre) {
     let i = 0;
     while (i < 6) {
       let line1 = ''
-      if (i < 4) {
-        line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3">'
-      } else {
+      if (i < 2) {
         line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-lg-block">'
+      } else if (i > 1 && i < 4) {
+        line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-md-block">'
+      } else {
+        line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-sm-block">'
       }
         divList += line1
-        divList += '<div class="card bg-dark text-white img-fluid">'
-        divList += `<img class="card-img" src="${results[i].image_url}"></img>`
+        divList += '<div class="card bg-dark text-white ratio ratio-1x1 overflow-hidden">'
+        divList += `<img class="card-img w-100 h-auto object-fit-cover" src="${results[i].image_url}" ></img>`
         divList += '<div class="card-img-overlay" style="background-color: #aaa; opacity: 0.5; height:35%;">'
         divList += `<p>${results[i].title}</p>`
         divList += `<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="openModal(${results[i].id})">Details</button>`
