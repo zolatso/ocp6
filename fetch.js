@@ -90,14 +90,17 @@ async function getFilmBoxes(container_id, genre) {
     const results = await getTopFilms(url);
     let divList = ''
     let i = 0;
+    const box_id_row_1 = container_id + "_boxid1"
+    const box_id_row_2 = container_id + "_boxid2"
+    const box_id_row_3 = container_id + "_boxid3"
     while (i < 6) {
       let line1 = ''
       if (i < 2) {
-        line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-lg-block">'
+        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-lg-block" id="${box_id_row_1}">`
       } else if (i > 1 && i < 4) {
-        line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-md-block">'
+        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-md-block" id="${box_id_row_2}">`
       } else {
-        line1 = '<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-sm-block">'
+        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-sm-block" id="${box_id_row_3}">`
       }
         divList += line1
         divList += '<div class="card bg-dark text-white ratio ratio-1x1 overflow-hidden">'
@@ -136,6 +139,48 @@ async function getTopBox() {
   document.getElementById("top_box_title").innerHTML = film.title
   document.getElementById("top_box_description").innerHTML = film.description
   document.getElementById("top_film_button").setAttribute('onclick', `openModal(${film.id})`)
+}
+
+function toggleButtonText(button) {
+  if (button.innerHTML === "Voir plus") {
+    button.innerHTML = "Voir moins"
+  } else if (button.innerHTML === "Voir moins") {
+    button.innerHTML = "Voir plus"
+  }
+}
+
+function getCurrentBreakpoint() {
+  const width = window.innerWidth
+  let breakpoint = ''
+  if (width < 768) {
+    breakpoint = 'sm'
+  } else if (width > 767 && width < 992) {
+    breakpoint = 'md'
+  } else {
+    breakpoint = 'lg'
+  }
+  return breakpoint
+}
+
+function toggleFilms(button_id, container_id) {
+  const button = document.getElementById(button_id)
+  const state = button.innerHTML === "Voir plus" ? 0 : 1
+  const breakpoint = getCurrentBreakpoint()
+  console.log(breakpoint)
+  if (state == 0) {
+    if (breakpoint === 'sm') {
+
+    } else if (breakpoint === 'md') {
+
+    }
+  } else if (state == 1) {
+    if (breakpoint === 'sm') {
+
+    } else if (breakpoint === 'md') {
+
+    }
+  } 
+  toggleButtonText(button)
 }
 
 

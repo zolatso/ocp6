@@ -5,6 +5,11 @@
     left: 0;
   }
 
+.basic-box {
+    max-width: 844px;
+    background-color: #000;
+}
+
 /* .top_box {
     margin: auto;
     margin-top: 50px;
