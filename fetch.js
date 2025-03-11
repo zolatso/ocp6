@@ -66,7 +66,7 @@ async function openModal(id){
   modal_headers += `<p><b>Realisé par:</b></p>`
   modal_headers += `<p>${directors}</p>`
 
-  modal_img = `<img src="${film.image_url}">`
+  modal_img = `<img class="img-fluid" src="${film.image_url}">`
 
   modal_main_text += `<p>${film.long_description}</p>`
   modal_main_text += `<p><b>Avec:</b></p>`
@@ -105,9 +105,11 @@ async function getFilmBoxes(container_id, genre) {
         divList += line1
         divList += '<div class="card bg-dark text-white ratio ratio-1x1 overflow-hidden">'
         divList += `<img class="card-img w-100 h-auto object-fit-cover" src="${results[i].image_url}" ></img>`
-        divList += '<div class="card-img-overlay" style="background-color: #aaa; opacity: 0.5; height:35%;">'
+        divList += '<div class="card-img-overlay">'
+        divList += '<div class="overlay-strip">'
         divList += `<p>${results[i].title}</p>`
-        divList += `<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="openModal(${results[i].id})">Details</button>`
+        divList += `<button class="btn btn-secondary overlay-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="openModal(${results[i].id})">Details</button>`
+        divList += '</div>'
         divList += '</div>'
         divList += '</div>'
         divList += '</div>'

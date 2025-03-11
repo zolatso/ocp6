@@ -4,10 +4,28 @@
     top: 0;
     left: 0;
   }
-
+#top_film_button {
+    float: right;
+    margin-right: 20px;
+}
 .basic-box {
     max-width: 844px;
     background-color: #000;
+}
+.top-image {
+    margin-top: 20px;
+}
+.main-headings {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.overlay-strip {
+    margin: 0 auto;
+    margin-top:20%;
+    padding: 30px;
+    background-color: rgba(50, 50, 50, 0.8);
+    border: 0;
+    width:100%
 }
 
 /* .top_box {
