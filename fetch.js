@@ -90,17 +90,17 @@ async function getFilmBoxes(container_id, genre) {
     const results = await getTopFilms(url);
     let divList = ''
     let i = 0;
-    const box_id_row_1 = container_id + "_boxid1"
+    //const box_id_row_1 = container_id + "_boxid1"
     const box_id_row_2 = container_id + "_boxid2"
     const box_id_row_3 = container_id + "_boxid3"
     while (i < 6) {
       let line1 = ''
       if (i < 2) {
-        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-lg-block" id="${box_id_row_1}">`
+        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3">`
       } else if (i > 1 && i < 4) {
-        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-md-block" id="${box_id_row_2}">`
+        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-md-block" id="${container_id}_box_${i}">`
       } else {
-        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-sm-block" id="${box_id_row_3}">`
+        line1 = `<div class="col-12 col-md-6 col-lg-4 mb-3 d-none d-lg-block" id="${container_id}_box_${i}">`
       }
         divList += line1
         divList += '<div class="card bg-dark text-white ratio ratio-1x1 overflow-hidden">'
@@ -149,36 +149,29 @@ function toggleButtonText(button) {
   }
 }
 
-function getCurrentBreakpoint() {
-  const width = window.innerWidth
-  let breakpoint = ''
-  if (width < 768) {
-    breakpoint = 'sm'
-  } else if (width > 767 && width < 992) {
-    breakpoint = 'md'
-  } else {
-    breakpoint = 'lg'
-  }
-  return breakpoint
-}
-
 function toggleFilms(button_id, container_id) {
   const button = document.getElementById(button_id)
   const state = button.innerHTML === "Voir plus" ? 0 : 1
-  const breakpoint = getCurrentBreakpoint()
-  console.log(breakpoint)
+  const row_2 = [document.getElementById(container_id + "_box_2"), document.getElementById(container_id + "_box_3")];
+  const row_3 = [document.getElementById(container_id + "_box_4"), document.getElementById(container_id + "_box_5")];
   if (state == 0) {
-    if (breakpoint === 'sm') {
-
-    } else if (breakpoint === 'md') {
-
-    }
+    row_2[0].classList.remove("d-none")
+    row_2[0].classList.remove("d-md-block")
+    row_2[1].classList.remove("d-none")
+    row_2[1].classList.remove("d-md-block")
+    row_3[0].classList.remove("d-none")
+    row_3[0].classList.remove("d-sd-block")
+    row_3[1].classList.remove("d-none")
+    row_3[1].classList.remove("d-sd-block")
   } else if (state == 1) {
-    if (breakpoint === 'sm') {
-
-    } else if (breakpoint === 'md') {
-
-    }
+    row_2[0].classList.add("d-none")
+    row_2[0].classList.add("d-md-block")
+    row_2[1].classList.add("d-none")
+    row_2[1].classList.add("d-md-block")
+    row_3[0].classList.add("d-none")
+    row_3[0].classList.add("d-sd-block")
+    row_3[1].classList.add("d-none")
+    row_3[1].classList.add("d-sd-block")
   } 
   toggleButtonText(button)
 }
