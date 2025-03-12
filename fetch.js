@@ -57,11 +57,11 @@ async function openModal(id){
   let modal_img = ''
   let modal_main_text = ''
 
-  modal_headers += `<h3>${film.title}</h3>`
-  modal_headers += `<h5>${film.year} - ${genres}</h5>`
-  modal_headers += `<h5>${film.rated} - ${film.duration} minutes (${countries})</h5>`
-  modal_headers += `<h5>IMDB Score: ${film.imdb_score}/10</h5>`
-  modal_headers += `<h5>Recettes au box office: ${gross_income}</h5>`
+  modal_headers += `<h2>${film.title}</h2>`
+  modal_headers += `<h4>${film.year} - ${genres}</h4>`
+  modal_headers += `<h4>${film.rated} - ${film.duration} minutes (${countries})</h4>`
+  modal_headers += `<h4>IMDB Score: ${film.imdb_score}/10</h4>`
+  modal_headers += `<h4>Recettes au box office: ${gross_income}</h4>`
   modal_headers += `<p></p>`
   modal_headers += `<p><b>Realisé par:</b></p>`
   modal_headers += `<p>${directors}</p>`
@@ -71,8 +71,6 @@ async function openModal(id){
   modal_main_text += `<p>${film.long_description}</p>`
   modal_main_text += `<p><b>Avec:</b></p>`
   modal_main_text += `<p>${actors}</p>`
-  
-  console.log(modal_main_text)
 
   document.getElementById("modal_headers").innerHTML = modal_headers
   document.getElementById("modal_header_img").innerHTML = modal_img
@@ -104,7 +102,7 @@ async function getFilmBoxes(container_id, genre) {
       }
         divList += line1
         divList += '<div class="card bg-dark text-white ratio ratio-1x1 overflow-hidden">'
-        divList += `<img class="card-img w-100 h-auto object-fit-cover" src="${results[i].image_url}" ></img>`
+        divList += `<img class="card-img w-100 h-auto object-fit-cover" src="${results[i].image_url}" alt="Thumbnail image: ${results[i].title}"></img>`
         divList += '<div class="card-img-overlay">'
         divList += '<div class="overlay-strip">'
         divList += `<p>${results[i].title}</p>`
