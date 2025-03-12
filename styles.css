@@ -23,10 +23,9 @@ select {
     float: right;
     margin-right: 20px;
 }
-/*.basic-box {
-    max-width: 844px;
-    background-color: #000;
-}*/
+#free_choice_container {
+    min-height:300px
+}
 .top-image {
     margin-top: 20px;
 }
