@@ -75,9 +75,8 @@ async function openModal(id){
   document.getElementById("modal_headers").innerHTML = modal_headers
   document.getElementById("modal_header_img").innerHTML = modal_img
   document.getElementById("modal_main_text").innerHTML = modal_main_text
-  
 }
-  
+
 async function getFilmBoxes(container_id, genre) {
     let url;
     if (genre) {
@@ -88,9 +87,6 @@ async function getFilmBoxes(container_id, genre) {
     const results = await getTopFilms(url);
     let divList = ''
     let i = 0;
-    //const box_id_row_1 = container_id + "_boxid1"
-    const box_id_row_2 = container_id + "_boxid2"
-    const box_id_row_3 = container_id + "_boxid3"
     while (i < 6) {
       let line1 = ''
       if (i < 2) {
@@ -113,18 +109,18 @@ async function getFilmBoxes(container_id, genre) {
         divList += '</div>'
         i++
     }
-  
+
     // Get the element where we want to display the data
-    const displayElement = document.getElementById(container_id);    
-  
+    const displayElement = document.getElementById(container_id);
+
     // Insert the 6 divs
     displayElement.innerHTML = divList
-  
+
   }
-  
+
 async function populateList() {
     const genres = await getGenres();
-    let selectList;
+    let selectList = '';
     for (let i = 0; i < genres.length; i++) {
       selectList += `<option value="${genres[i]}">${genres[i]}</option>`
     }
@@ -172,7 +168,7 @@ function toggleFilms(button_id, container_id) {
     row_3[0].classList.add("d-sd-block")
     row_3[1].classList.add("d-none")
     row_3[1].classList.add("d-sd-block")
-  } 
+  }
   toggleButtonText(button)
 }
 
