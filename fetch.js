@@ -66,7 +66,7 @@ async function openModal(id){
   modal_headers += `<p><b>Realisé par:</b></p>`
   modal_headers += `<p>${directors}</p>`
 
-  modal_img = `<img class="img-fluid" src="${film.image_url}">`
+  modal_img = `<img class="img-fluid" src="${film.image_url}" alt="${film.title}">`
 
   modal_main_text += `<p>${film.long_description}</p>`
   modal_main_text += `<p><b>Avec:</b></p>`
